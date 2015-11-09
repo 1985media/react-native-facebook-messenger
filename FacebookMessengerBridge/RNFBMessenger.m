@@ -3,7 +3,6 @@
 //  PerfectGifMessenger
 //
 //  Created by Brandon Fisch on 10/27/15.
-//  Copyright © 2015 Facebook. All rights reserved.
 //
 
 #import "RNFBMessenger.h"
@@ -18,22 +17,30 @@ RCT_EXPORT_MODULE()
 
 
 // Load data from disk and return the String.
-RCT_EXPORT_METHOD(sendGif:(NSString *) gifUrl
-                  remoteUrl:(NSString *) remoteUrl
-                  errorCallback:(RCTResponseSenderBlock)failureCallback
-                  callback:(RCTResponseSenderBlock)successCallback) {
+RCT_EXPORT_METHOD(send:(NSString *) mediaType
+                  pathForResource:(NSString *) pathForResource
+                  metadata:(NSString *) metadata
+//                  errorCallback:(RCTResponseSenderBlock)failureCallback
+//                  callback:(RCTResponseSenderBlock)successCallback
+                  )
+{
   
-  NSLog(@"%@ %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd));	
-  
-  NSString *metadata = [NSString stringWithFormat:@"{ \"image\" : \"%@\" }", remoteUrl];
-    
-  NSData *gifData = [NSData dataWithContentsOfURL : [NSURL URLWithString:gifUrl]];
+  NSData *data = [NSData dataWithContentsOfURL : [NSURL URLWithString:pathForResource]];
   FBSDKMessengerShareOptions *options = [[FBSDKMessengerShareOptions alloc] init];
   options.metadata = metadata;
   
-  [FBSDKMessengerSharer shareAnimatedGIF:gifData withOptions:options];
+  if([mediaType isEqualToString: @"image"]){
+    [FBSDKMessengerSharer shareAnimatedGIF:data withOptions:options];
+  } else if ([mediaType isEqualToString:@"gif"]){
+    [FBSDKMessengerSharer shareAnimatedGIF:data withOptions:options];
+  } else if ([mediaType isEqualToString:@"video"]){
+    [FBSDKMessengerSharer shareVideo:data withOptions:options];
+  } else if ([mediaType isEqualToString:@"audio"]){
+    [FBSDKMessengerSharer shareAudio:data withOptions:options];
+  }
   
-  successCallback(@[gifUrl]);
+  
+//  successCallback(@[gifUrl]);
 }
 
 RCT_EXPORT_METHOD(backToMessenger){

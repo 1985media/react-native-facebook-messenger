@@ -24,7 +24,29 @@ FBMessengerButton.propTypes = {
 
 var RCTFBMessengerButton = requireNativeComponent('RCTFBMessengerButton', FBMessengerButton);
 
+const ShareType = {
+    image: 'image',
+    gif: 'gif',
+    video: 'video',
+    audio: 'audio',
+};
+
+function send(type, filePath, metadata){
+    if(type in ShareType) {
+        if(typeof metadata !== 'string'){
+            metadata = JSON.stringify(metadata);
+        }
+        NativeModules.RNFBMessenger.send(type, filePath, metadata);
+    } else {
+        throw new Error(`
+        "${type}" is not a valid type for this method.
+            Valid values are: ShareType.image, ShareType.gif, ShareType.video, ShareType.audio`);
+    }
+}
+
 module.exports = {
     Button: FBMessengerButton,
-    backToMessenger: NativeModules.RNFBMessenger.backToMessenger
+    backToMessenger: NativeModules.RNFBMessenger.backToMessenger,
+    send: send,
+    ShareType: ShareType,
 };
