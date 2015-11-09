@@ -1,13 +1,19 @@
 var React = require('react-native');
 var {
     requireNativeComponent,
-    NativeModules
+    NativeModules,
+    StyleSheet,
+    TouchableWithoutFeedback,
     } = React;
 
 class FBMessengerButton extends React.Component {
 
     render() {
-        return <RCTFBMessengerButton {...this.props}/>;
+        return (
+            <TouchableWithoutFeedback style={[styles.sendToMessengerWrapper, this.props.style]} onPress={this.props.onPress.bind(this)}>
+                <RCTFBMessengerButton style={[styles.sendToMessengerWrapper, this.props.style]}/>
+            </TouchableWithoutFeedback>
+        );
     }
 }
 
@@ -21,6 +27,16 @@ FBMessengerButton.propTypes = {
      */
     //pitchEnabled: React.PropTypes.bool,
 };
+
+var styles = StyleSheet.create({
+    sendToMessengerWrapper: {
+        width: 300,
+        height: 50,
+        backgroundColor: blue,
+        flex: 1,
+        alignSelf: 'center',
+    }
+});
 
 var RCTFBMessengerButton = requireNativeComponent('RCTFBMessengerButton', FBMessengerButton);
 
