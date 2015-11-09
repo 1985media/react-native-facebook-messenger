@@ -1,0 +1,19 @@
+{
+  "name": "react-native-facebook-messenger",
+  "version": "1.0.0",
+  "description": "A React Native Module and UI Component used to integrate Facebook Messenger functionality into a React Native application.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/1985media/react-native-facebook-messenger.git"
+  },
+  "author": "Brandon Fisch",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/1985media/react-native-facebook-messenger/issues"
+  },
+  "homepage": "https://github.com/1985media/react-native-facebook-messenger#readme"
+}
