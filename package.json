@@ -1,6 +1,6 @@
 {
   "name": "react-native-facebook-messenger",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A React Native Module and UI Component used to integrate Facebook Messenger functionality into a React Native application.",
   "main": "index.js",
   "scripts": {
