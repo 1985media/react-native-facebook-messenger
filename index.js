@@ -6,6 +6,8 @@ var {
     TouchableWithoutFeedback,
     } = React;
 
+const blue = '#0084ff';
+
 class FBMessengerButton extends React.Component {
 
     render() {
