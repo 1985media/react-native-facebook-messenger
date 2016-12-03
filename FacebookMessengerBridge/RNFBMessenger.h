@@ -6,8 +6,8 @@
 //  Copyright © 2015 Facebook. All rights reserved.
 //
 
-#import "RCTBridge.h"
-#import "RCTEventDispatcher.h"
+#import <React/RCTBridge.h>
+#import <React/RCTEventDispatcher.h>
 
 @interface RNFBMessenger : NSObject <RCTBridgeModule>
 @property (nonatomic, strong) NSString *reply;
