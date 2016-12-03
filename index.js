@@ -1,14 +1,16 @@
-var React = require('react-native');
+var React = require('react');
+var {Component} = React;
+var ReactNative = require('react-native');
 var {
     requireNativeComponent,
     NativeModules,
     StyleSheet,
     TouchableWithoutFeedback,
-    } = React;
+    } = ReactNative;
 
 const blue = '#0084ff';
 
-class FBMessengerButton extends React.Component {
+class FBMessengerButton extends Component {
 
     render() {
         return (
